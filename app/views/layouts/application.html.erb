@@ -12,12 +12,25 @@
 
   <body>
   <header>
-    <div class="title_logo">
+    <div class="header_logo">
       <%= link_to("TokiLog","/")%>
+    </div>
     <div class="menu_bar">
       <%= link_to("message","/message")%>
+      <div class="search">
+        <div class="search-brank"></div>
+        <div class="search-form-wrapper slide-hidden" id="search_form">
+          <button class="fa-solid fa-magnifying-glass" id="search_show_button"></button>
+          <%= form_with url: search_posts_path, method: :get, local: :true do |form| %>
+            <%= form.text_field :keyword, value: @keyword %>
+            <%= form.submit "search" %>
+          <% end %>
+        </div>
+      </div>
     </div>
   </header>
+
     <%= yield %>
+    
   </body>
 </html>
